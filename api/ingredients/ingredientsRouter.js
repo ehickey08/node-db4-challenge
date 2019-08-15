@@ -32,6 +32,19 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
+router.get('/:id/recipes', async (req,res,next) => {
+    try{
+        const recipes = await Ingredients.getAllRecipes(req.params.id);
+        res.status(200).json(recipes);
+    }catch (err) {
+        next({
+            err,
+            stat: 500,
+            message: 'The recipes could not be retrieved.',
+        });
+    }
+})
+
 router.post('/', async (req, res, next) => {
     try {
         const newIngred = await Ingredients.add(req.body);

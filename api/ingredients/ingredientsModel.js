@@ -6,6 +6,7 @@ module.exports = {
     add,
     update,
     remove,
+    getAllRecipes
 };
 
 function get() {
@@ -35,4 +36,11 @@ function remove(id) {
     return db('ingredients')
         .where({ id })
         .del();
+}
+
+function getAllRecipes(id){
+    return db('recipe_ingredients as t')
+    .join('recipes as r', 't.recipe_id', 'r.id')
+    .where('t.ingredient_id', id)
+    .select('r.recipe_name')
 }
