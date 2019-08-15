@@ -3,7 +3,7 @@ const helmet = require('helmet');
 
 const recipeRouter = require('./api/recipes/recipesRouter');
 const ingredientsRouter = require('./api/ingredients/ingredientsRouter');
-const instructionsRouter = require('./api/instructions/instructionsRouter');
+
 
 const server = express();
 
@@ -15,7 +15,7 @@ server.use(helmet());
 server.use(express.json());
 server.use('/recipes', recipeRouter);
 server.use('/ingredients', ingredientsRouter);
-server.use('/instructions', instructionsRouter);
+
 server.use(errorHandler);
 
 function errorHandler(error, req, res, next) {
