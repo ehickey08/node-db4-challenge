@@ -31,6 +31,7 @@ exports.up = function(knex) {
             tbl.float('quantity')
                 .unsigned()
                 .notNullable();
+            tbl.string('measurement', 255);
         })
         .createTable('instructions', tbl => {
             tbl.increments();
