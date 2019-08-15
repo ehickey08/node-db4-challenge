@@ -6,9 +6,21 @@ exports.up = function(knex) {
                 .unique()
                 .notNullable();
         })
+        .createTable('ingredients', tbl => {
+            tbl.increments();
+            tbl.string('ingredient_name', 255)
+                .unique()
+                .notNullable();
+        })
         .createTable('recipes_ingredients', tbl => {
             tbl.increments();
-            tbl.string('ingredient_name', 255).notNullable();
+            tbl.integer('ingredient_id')
+                .unsigned()
+                .notNullable()
+                .references('id')
+                .inTable()
+                .onUpdate('CASCADE')
+                .onDelete('CASCADE');
             tbl.integer('recipe_id')
                 .unsigned()
                 .notNullable()
