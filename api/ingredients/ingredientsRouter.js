@@ -21,7 +21,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
     try {
-        const ingred = await Ingredients.getById();
+        const ingred = await Ingredients.getById(req.params.id);
         res.status(200).json(ingred);
     } catch (err) {
         next({
