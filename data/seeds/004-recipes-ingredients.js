@@ -1,8 +1,8 @@
 exports.seed = function(knex) {
-    return knex('recipes')
+    return knex('recipe_ingredients')
         .truncate()
         .then(function() {
-            return knex('recipes').insert([
+            return knex('recipe_ingredients').insert([
                 {
                     recipe_id: 1,
                     ingredient_id: 1,

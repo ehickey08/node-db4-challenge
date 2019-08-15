@@ -12,13 +12,13 @@ exports.up = function(knex) {
                 .unique()
                 .notNullable();
         })
-        .createTable('recipes_ingredients', tbl => {
+        .createTable('recipe_ingredients', tbl => {
             tbl.increments();
             tbl.integer('ingredient_id')
                 .unsigned()
                 .notNullable()
                 .references('id')
-                .inTable()
+                .inTable('ingredients')
                 .onUpdate('CASCADE')
                 .onDelete('CASCADE');
             tbl.integer('recipe_id')

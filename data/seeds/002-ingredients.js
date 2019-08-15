@@ -1,8 +1,8 @@
 exports.seed = function(knex) {
-    return knex('recipes')
+    return knex('ingredients')
         .truncate()
         .then(function() {
-            return knex('recipes').insert([
+            return knex('ingredients').insert([
                 { ingredient_name: 'Ground Beef' },
                 { ingredient_name: 'Taco Seasoning' },
                 { ingredient_name: 'Taco Shells' },
